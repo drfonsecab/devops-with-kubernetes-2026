@@ -2,12 +2,24 @@
 import sys
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+HTML_CONTENT = """<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo App</title>
+</head>
+<body>
+    <h1>Todo App</h1>
+    <p>DevOps with Kubernetes 2026 - Project</p>
+</body>
+</html>
+"""
+
 class SimpleHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
-        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Content-Type", "text/html; charset=utf-8")
         self.end_headers()
-        self.wfile.write(b"Todo App - DevOps with Kubernetes 2026\n")
+        self.wfile.write(HTML_CONTENT.encode("utf-8"))
 
     def log_message(self, format, *args):
         sys.stderr.write("%s - - [%s] %s\n" % (self.address_string(), self.log_date_time_string(), format % args))
