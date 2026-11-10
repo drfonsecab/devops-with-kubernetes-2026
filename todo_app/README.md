@@ -9,20 +9,26 @@ Al inicializarse, muestra exactamente en consola:
 Server started in port 3000
 ```
 
-## Ejecución con Docker
+## Ejecución Local con Docker
 ```bash
 docker build -t todo-app:1.2 .
 docker run -p 3000:3000 --rm todo-app:1.2
 ```
 
 ## Despliegue en Kubernetes (k3d)
+
+### 1. Importar imagen local a k3d
 ```bash
-# Importar imagen al clúster k3d
 k3d image import todo-app:1.2 -c k3s-default
+```
 
-# Despliegue imperativo (Ejercicio 1.2)
-kubectl create deployment todo-app-dep --image=todo-app:1.2
+### 2. Despliegue declarativo (Ejercicio 1.4)
+```bash
+kubectl apply -f manifests/deployment.yaml
+```
 
-# Verificar logs
-kubectl logs -l app=todo-app-dep
+### 3. Verificar pods y logs
+```bash
+kubectl get pods -l app=todo-app
+kubectl logs -f -l app=todo-app
 ```
