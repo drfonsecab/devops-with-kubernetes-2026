@@ -15,13 +15,19 @@ docker run --rm log-output:1.1
 ```
 
 ## Despliegue en Kubernetes (k3d)
+
+### 1. Importar imagen local a k3d
 ```bash
-# Importar la imagen al clúster k3d
 k3d image import log-output:1.1 -c k3s-default
+```
 
-# Crear despliegue imperativo (Ejercicio 1.1)
-kubectl create deployment log-output-dep --image=log-output:1.1
+### 2. Despliegue declarativo (Ejercicio 1.3)
+```bash
+kubectl apply -f manifests/deployment.yaml
+```
 
-# Ver los logs en tiempo real
-kubectl logs -f -l app=log-output-dep
+### 3. Verificar pods y logs
+```bash
+kubectl get pods -l app=log-output
+kubectl logs -f -l app=log-output
 ```
