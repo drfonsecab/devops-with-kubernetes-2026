@@ -85,7 +85,7 @@ Cada vez que se complete un ejercicio:
 
 | Ejercicio | Descripción / Tema | Aplicación | Enlace a Release / Tag | Estado |
 | :---: | :--- | :--- | :--- | :---: |
-| **1.1** | First deploy (Log Output) | /log_output | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.1/log_output) | ⏳ Pendiente |
+| **1.1** | First deploy (Log Output) | /log_output | [Solución (Tag 1.1)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.1/log_output) | ✅ Completado |
 | **1.2** | Project v0.1 (Todo App) | /todo_app | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.2/todo_app) | ⏳ Pendiente |
 | **1.3** | Declarative approach | /log_output | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.3/log_output) | ⏳ Pendiente |
 | **1.4** | Project v0.2 | /todo_app | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.4/todo_app) | ⏳ Pendiente |
