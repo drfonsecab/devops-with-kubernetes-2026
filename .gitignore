@@ -1,0 +1,45 @@
+﻿# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment & Secrets
+*.env
+*.env.*
+!.env.example
+*.secret.yaml
+*.secret.yml
+secrets/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+env/
+venv/
+.venv/
+
+# Go
+bin/
+pkg/
+
+# Build outputs
+dist/
+build/
+tmp/
+*.tmp
+
+# IDE / Editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local cluster artifacts
+*.kubeconfig
