@@ -106,7 +106,7 @@ Cada vez que se complete un ejercicio:
 | Ejercicio | Descripción / Tema | Aplicación | Enlace a Release / Tag | Estado |
 | :---: | :--- | :--- | :--- | :---: |
 | **2.1** | Connecting pods | /log_output & /ping_pong | [Solución (Tag 2.1)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/2.1/log_output) | ✅ Completado |
-| **2.2** | Project v0.8 | /todo_app | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/2.2/todo_app) | ⏳ Pendiente |
+| **2.2** | Project v0.8 | /todo_app | [Solución (Tag 2.2)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/2.2/todo_app) | ✅ Completado |
 | **2.3** | Routing with Ingress | /log_output & /ping_pong | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/2.3/log_output) | ⏳ Pendiente |
 | **2.4** | Project v0.9 | /todo_app | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/2.4/todo_app) | ⏳ Pendiente |
 | **2.5** | Documentation & setup | Documentación | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/2.5/) | ⏳ Pendiente |
