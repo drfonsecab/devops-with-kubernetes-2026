@@ -92,7 +92,7 @@ Cada vez que se complete un ejercicio:
 | **1.5** | Project v0.3 | /todo_app | [Solución (Tag 1.5)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.5/todo_app) | ✅ Completado |
 | **1.6** | Project v0.4 | /todo_app | [Solución (Tag 1.6)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.6/todo_app) | ✅ Completado |
 | **1.7** | External access with Ingress | /log_output | [Solución (Tag 1.7)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.7/log_output) | ✅ Completado |
-| **1.8** | Project v0.5 | /todo_app | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.8/todo_app) | ⏳ Pendiente |
+| **1.8** | Project v0.5 | /todo_app | [Solución (Tag 1.8)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.8/todo_app) | ✅ Completado |
 | **1.9** | More services (Ping-Pong) | /ping_pong | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.9/ping_pong) | ⏳ Pendiente |
 | **1.10** | Split log output | /log_output | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.10/log_output) | ⏳ Pendiente |
 | **1.11** | Persisting data / Volumes | /log_output | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.11/log_output) | ⏳ Pendiente |
