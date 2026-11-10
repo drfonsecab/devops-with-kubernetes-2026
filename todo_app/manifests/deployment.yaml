@@ -14,12 +14,19 @@ spec:
       labels:
         app: todo-app
     spec:
+      volumes:
+        - name: todo-vol
+          persistentVolumeClaim:
+            claimName: todo-pvc
       containers:
         - name: todo-app
-          image: todo-app:1.5
+          image: todo-app:1.12
           imagePullPolicy: IfNotPresent
           env:
             - name: PORT
               value: "3000"
           ports:
             - containerPort: 3000
+          volumeMounts:
+            - name: todo-vol
+              mountPath: /usr/src/app/files
