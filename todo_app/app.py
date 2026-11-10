@@ -1,12 +1,15 @@
 ﻿import os
 import sys
 import time
+import json
 import urllib.request
+import urllib.parse
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 IMAGE_DIR = "/usr/src/app/files"
 IMAGE_PATH = os.path.join(IMAGE_DIR, "image.jpg")
 IMAGE_URL = "https://picsum.photos/1200"
+BACKEND_URL = os.environ.get("BACKEND_URL", "http://todo-backend-svc:2345/todos")
 CACHE_SECONDS = 600
 
 def get_or_update_image():
@@ -36,6 +39,16 @@ def get_or_update_image():
             print("Image downloaded successfully.", flush=True)
         except Exception as e:
             print(f"Error fetching image: {e}", flush=True)
+
+def fetch_todos():
+    try:
+        req = urllib.request.Request(BACKEND_URL, headers={"User-Agent": "todo-frontend"})
+        with urllib.request.urlopen(req, timeout=5) as response:
+            data = json.loads(response.read().decode("utf-8"))
+            return data
+    except Exception as e:
+        print(f"Error fetching todos from {BACKEND_URL}: {e}", flush=True)
+        return [{"id": 0, "content": "Unable to load todos"}]
 
 class TodoHandler(BaseHTTPRequestHandler):
     def do_HEAD(self):
@@ -77,7 +90,14 @@ class TodoHandler(BaseHTTPRequestHandler):
 
         if self.path in ("/", "/index.html"):
             get_or_update_image()
-            html = """<!DOCTYPE html>
+            todos_list = fetch_todos()
+            
+            todos_html = ""
+            for item in todos_list:
+                content = item.get("content", str(item)) if isinstance(item, dict) else str(item)
+                todos_html += f"        <li>{content}</li>\n"
+
+            html = f"""<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -87,14 +107,12 @@ class TodoHandler(BaseHTTPRequestHandler):
     <h1>Todo App</h1>
     <p>DevOps with Kubernetes 2026 - Project</p>
     <img src="/image.jpg" width="400" alt="Daily picture" />
-    <form style="margin-top: 15px;">
+    <form action="/todos" method="POST" style="margin-top: 15px;">
         <input type="text" name="todo" maxlength="140" placeholder="New todo" required />
         <button type="submit">Create TODO</button>
     </form>
     <ul>
-        <li>TODO 1</li>
-        <li>TODO 2</li>
-    </ul>
+{todos_html}    </ul>
 </body>
 </html>
 """
@@ -109,13 +127,37 @@ class TodoHandler(BaseHTTPRequestHandler):
         self.send_response(404)
         self.end_headers()
 
+    def do_POST(self):
+        # Handle form submission if routed to frontend
+        content_length = int(self.headers.get("Content-Length", 0))
+        raw_body = self.rfile.read(content_length).decode("utf-8")
+        parsed = urllib.parse.parse_qs(raw_body)
+        todo_text = parsed.get("todo", [""])[0]
+
+        if todo_text:
+            try:
+                payload = json.dumps({"content": todo_text}).encode("utf-8")
+                req = urllib.request.Request(
+                    BACKEND_URL,
+                    data=payload,
+                    headers={"Content-Type": "application/json", "User-Agent": "todo-frontend"}
+                )
+                with urllib.request.urlopen(req, timeout=5) as resp:
+                    pass
+            except Exception as e:
+                print(f"Error forwarding POST to backend: {e}", flush=True)
+
+        self.send_response(303)
+        self.send_header("Location", "/")
+        self.end_headers()
+
     def log_message(self, format, *args):
         sys.stderr.write("%s - - [%s] %s\n" % (self.address_string(), self.log_date_time_string(), format % args))
 
 def main():
     port = int(os.environ.get("PORT", "3000"))
     server = HTTPServer(("", port), TodoHandler)
-    print(f"Server started in port {port}", flush=True)
+    print(f"Server started in port {port} (Backend at {BACKEND_URL})", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
