@@ -1,0 +1,27 @@
+﻿# Log Output Application
+
+Aplicación de registro en tiempo real desarrollada para el curso **DevOps with Kubernetes 2026**.
+
+## Funcionamiento
+Al arrancar, genera un identificador único aleatorio (`UUIDv4`) en memoria y cada 5 segundos imprime en consola la marca de tiempo en formato ISO 8601 UTC junto al UUID:
+```text
+2026-11-10T12:15:17.705Z: 8523ecb1-c716-4cb6-a044-b9e83bb98e43
+```
+
+## Ejecución Local con Docker
+```bash
+docker build -t log-output:1.1 .
+docker run --rm log-output:1.1
+```
+
+## Despliegue en Kubernetes (k3d)
+```bash
+# Importar la imagen al clúster k3d
+k3d image import log-output:1.1 -c k3s-default
+
+# Crear despliegue imperativo (Ejercicio 1.1)
+kubectl create deployment log-output-dep --image=log-output:1.1
+
+# Ver los logs en tiempo real
+kubectl logs -f -l app=log-output-dep
+```
