@@ -38,6 +38,26 @@ def get_or_update_image():
             print(f"Error fetching image: {e}", flush=True)
 
 class TodoHandler(BaseHTTPRequestHandler):
+    def do_HEAD(self):
+        if self.path == "/image.jpg":
+            get_or_update_image()
+            if os.path.exists(IMAGE_PATH):
+                self.send_response(200)
+                self.send_header("Content-Type", "image/jpeg")
+                self.send_header("Content-Length", str(os.path.getsize(IMAGE_PATH)))
+                self.end_headers()
+            else:
+                self.send_response(404)
+                self.end_headers()
+            return
+        if self.path in ("/", "/index.html"):
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.end_headers()
+            return
+        self.send_response(404)
+        self.end_headers()
+
     def do_GET(self):
         if self.path == "/image.jpg":
             get_or_update_image()
@@ -67,6 +87,14 @@ class TodoHandler(BaseHTTPRequestHandler):
     <h1>Todo App</h1>
     <p>DevOps with Kubernetes 2026 - Project</p>
     <img src="/image.jpg" width="400" alt="Daily picture" />
+    <form style="margin-top: 15px;">
+        <input type="text" name="todo" maxlength="140" placeholder="New todo" required />
+        <button type="submit">Create TODO</button>
+    </form>
+    <ul>
+        <li>TODO 1</li>
+        <li>TODO 2</li>
+    </ul>
 </body>
 </html>
 """
