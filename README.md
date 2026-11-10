@@ -95,7 +95,7 @@ Cada vez que se complete un ejercicio:
 | **1.8** | Project v0.5 | /todo_app | [Solución (Tag 1.8)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.8/todo_app) | ✅ Completado |
 | **1.9** | More services (Ping-Pong) | /ping_pong | [Solución (Tag 1.9)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.9/ping_pong) | ✅ Completado |
 | **1.10** | Split log output | /log_output | [Solución (Tag 1.10)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.10/log_output) | ✅ Completado |
-| **1.11** | Persisting data / Volumes | /log_output | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.11/log_output) | ⏳ Pendiente |
+| **1.11** | Persisting data / Volumes | /log_output | [Solución (Tag 1.11)](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.11/log_output) | ✅ Completado |
 | **1.12** | Project v0.6 | /todo_app | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.12/todo_app) | ⏳ Pendiente |
 | **1.13** | Project v0.7 | /todo_app | [Pendiente](https://github.com/drfonsecab/devops-with-kubernetes-2026/tree/1.13/todo_app) | ⏳ Pendiente |
 
